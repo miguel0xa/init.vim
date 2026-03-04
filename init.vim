@@ -10,11 +10,7 @@ endif
 call plug#begin('~/local/share/nvim/plugged')
 " THEMES
 Plug 'folke/tokyonight.nvim'
-Plug 'bettervim/yugen.nvim'
-Plug 'widatama/vim-phoenix'
 Plug 'n1ghtmare/noirblaze-vim'
-Plug 'aktersnurra/no-clown-fiesta.nvim'
-Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
 " PLENARY
 Plug 'nvim-lua/plenary.nvim'
 " LANGUAGE SUPPORT
@@ -24,7 +20,6 @@ Plug 'zah/nim.vim'
 " TELESCOPE
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 Plug 'nvim-tree/nvim-web-devicons' 
-Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 " BARS
 Plug 'romgrk/barbar.nvim'
@@ -39,9 +34,16 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 " LUA-LINE
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 call plug#end()
 
 lua <<EOF
+  require("mason").setup({
+    -- your configuration options here
+  })
+
+
   local cmp = require'cmp'
   cmp.setup({
   -- Installed sources:
@@ -102,10 +104,7 @@ set clipboard+=unnamedplus
 
 " Available colorschemes
 colorscheme tokyonight-night
-" colorscheme yugen
 " colorscheme noirblaze
-" colorscheme no-clown-fiesta
-" colorscheme gruvbox-baby
 
 " Barbar commands
 nnoremap <silent> <C-p> <Cmd>BufferPick<CR>
